@@ -4,7 +4,7 @@ class Database {
   static const String _host = "localhost";
   static const int _port = 3306;
   static const String _user = "root";
-  static const String _password = ""; // Coloque a senha aqui
+  static const String _password = "739651"; // Coloque a senha aqui
   static const String _dbname = "dadosinternet";
 
   static Future<MySQLConnection> abrirConexao() async {

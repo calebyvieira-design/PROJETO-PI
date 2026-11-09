@@ -5,6 +5,7 @@ import '../Classes/cliente.dart';
 import '../Classes/endereco.dart';
 import '../Classes/plano.dart';
 import '../Classes/contato.dart';
+import '../Classes/limpar_tela.dart';
 
 abstract class CadastroBase {
   bool textoValido(String valor, int limite, {bool obrigatorio = true}) {
@@ -105,7 +106,6 @@ class CadastroClientes extends CadastroBase {
   }
 
   Future<void> cadastrar() async {
-    print('\n');
     print(' -----------------------');
     print('   Cadastro de Cliente  ');
     print(' -----------------------');
@@ -130,6 +130,7 @@ class CadastroClientes extends CadastroBase {
         }
       }
     }
+    LimparTela();
 
     while (true) {
       bool pronto = dadosEndereco();
@@ -142,6 +143,7 @@ class CadastroClientes extends CadastroBase {
         }
       }
     }
+    LimparTela();
 
     while (true) {
       bool pronto = dadosContato();
@@ -154,6 +156,7 @@ class CadastroClientes extends CadastroBase {
         }
       }
     }
+    LimparTela();
 
     while (true) {
       bool pronto = dadosPlano();
@@ -166,6 +169,7 @@ class CadastroClientes extends CadastroBase {
         }
       }
     }
+    LimparTela();
 
     // Depois de tudo já ter sido inserido
     _cliente = Cliente(
@@ -197,6 +201,9 @@ class CadastroClientes extends CadastroBase {
     );
 
     await _clienteDao.cadastrarCliente(_cliente, _endereco, _contato, _plano);
+    stdout.write("Pressione ENTER para continuar...");
+    stdin.readLineSync();
+    LimparTela();
   }
 
   bool dadosPessoais() {
@@ -437,6 +444,7 @@ class CadastroClientes extends CadastroBase {
       "Deseja continuar o cadastro? (S para continuar, qualquer outra coisa para parar): ",
     );
     String entrada = stdin.readLineSync()!.toUpperCase();
+    LimparTela();
     if (entrada == "S") {
       return true;
     } else {
